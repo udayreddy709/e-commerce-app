@@ -1956,3 +1956,6 @@ Binding(CTRL+SHIFT+C,
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.ui.textEditorScope,,,system)
+
+!ENTRY org.eclipse.core.resources 2 10035 2024-03-04 14:13:30.433
+!MESSAGE The workspace will exit with unsaved changes in this session.
