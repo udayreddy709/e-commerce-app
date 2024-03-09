@@ -2,30 +2,25 @@ import axios from 'axios';
 import "../Styles/MerchantLogin.css";
 import { useState } from 'react';
 import Form from 'react-bootstrap/Form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const MerchantLogin = () => {
 
   let [email,setEmail] = useState("")
   let [password, setPassword] = useState("")
+  let navigate = useNavigate()
+
 
   function verifyMerchant (e){
     e.preventDefault();
-
-    // if(email == "abc@gmail.com" && password == 123){
-    //   alert("login successfull")
-    // }
-    // else{
-    //   alert("Invalid login")
-
-    // }
     axios.post(`http://localhost:8080/merchants/verify-by-email?email=${email}&password=${password}`)
     .then((res)=>{
-      console.log(res);
+      navigate('/merchanthomepagee')
+      console.log(res.data);
       alert("login successfull")
     })
     .catch((err)=>{
-      console.log(err);
+      console.log(err.data);
       alert("Invalid Credentials")
     })
   }
