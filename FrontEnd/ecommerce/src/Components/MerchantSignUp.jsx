@@ -1,5 +1,6 @@
 import { useState } from "react"
 import "../Styles/MerchantSignup.css"
+import axios from "axios"
 
 const MerchantSignUp = () => {
 let [name, setName] = useState("")
@@ -8,11 +9,27 @@ let [gst_number, setGst_number] = useState("")
 let [password, setPassword] = useState("")
 let [phone, setPhone] = useState("")
 
+let data = {name,email,gst_number,phone,password}
+
+let addMerchant = (e) => {
+  e.preventDefault();
+  axios.post("http://localhost:8080/merchants",data)
+  .then((res)=>{
+    console.log(res);
+    alert("Data Added Successfully")
+  })
+  .catch((err)=>{
+    console.log(err);
+    alert("Data Not Found")
+  })
+
+}
+
 
   return (
     <div className="merchantsignup">
        {/* <h3>MerchantSignup</h3> */}
-       <form action="">
+       <form onSubmit={addMerchant} action="">
       <label htmlFor="">Name</label>
       <input value={name} onChange={(e)=>{setName(e.target.value)}} type="text" placeholder="Enter the Name" required/>
       <label htmlFor="">Email</label>
